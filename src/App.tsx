@@ -1,15 +1,18 @@
-import { Layout } from "./components/Layout/Layout";
-import { NavBar } from "./components/NavBar/NavBar";
-import { Orders } from "./components/Orders/Orders";
-import { Widgets } from "./components/Widgets/Widgets";
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import { Layout } from './components/Layout/Layout';
+import { NavBar } from './components/NavBar/NavBar';
+import { Orders } from './components/Orders/Orders';
+import { Widgets } from './components/Widgets/Widgets';
 
 function App() {
     return (
-        <Layout
-            MainSection={<Widgets />}
-            RightSection={<Orders />}
-            TopSection={<NavBar />}
-        />
+        <ErrorBoundary>
+            <Layout
+                MainSection={<Widgets />}
+                RightSection={<Orders />}
+                TopSection={<NavBar />}
+            />
+        </ErrorBoundary>
     );
 }
 

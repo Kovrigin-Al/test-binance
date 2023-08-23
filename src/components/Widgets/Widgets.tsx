@@ -1,8 +1,6 @@
-import { FC } from "react";
-
-export const Widgets: FC = () => {
+export const Widgets = () => {
     return (
-        <div className="h-full w-full flex justify-center items-center">
+        <div className="flex h-full w-full items-center justify-center">
             Hello Test Binance App
         </div>
     );

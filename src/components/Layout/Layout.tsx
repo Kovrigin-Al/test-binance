@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { ReactNode } from 'react';
 
 type Props = {
     RightSection: ReactNode;
@@ -6,14 +6,14 @@ type Props = {
     MainSection: ReactNode;
 };
 
-export const Layout: FC<Props> = ({ RightSection, TopSection, MainSection }) => {
+export const Layout = ({ RightSection, TopSection, MainSection }: Props) => {
     return (
-        <div className="w-screen h-screen bg-slate-200 relative pt-12 pr-[20%] ">
-            <div className="absolute top-0 left-0 w-screen h-12 border-b border-black">
+        <div className="relative h-screen w-screen bg-slate-200 pr-[20%] pt-12 ">
+            <div className="absolute left-0 top-0 h-12 w-screen border-b border-black">
                 {TopSection}
             </div>
-            <div className="w-full h-full bg-red-100">{MainSection}</div>
-            <div className="absolute h-screen w-[20%] right-0 top-12 border-l border-black">
+            <div className="h-full w-full bg-red-100">{MainSection}</div>
+            <div className="absolute right-0 top-12 h-screen w-[20%] border-l border-black">
                 {RightSection}
             </div>
         </div>

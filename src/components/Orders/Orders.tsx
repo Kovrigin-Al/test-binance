@@ -1,5 +1,3 @@
-import { FC } from "react";
-
-export const Orders: FC = () => {
+export const Orders = () => {
     return <>Orders</>;
 };
