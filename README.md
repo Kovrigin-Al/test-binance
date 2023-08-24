@@ -8,6 +8,10 @@ https://test-binance.vercel.app
 
 ## Run locally
 
+First create .env file the the root repository. The required variables are shown in **example.env**.
+
+Then run in your terminal:
+
 ```bash
 npm install
 ```
