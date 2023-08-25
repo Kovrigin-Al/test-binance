@@ -2,20 +2,20 @@ const availableTokens: string[] = [
     "bchusdt@ticker"
 ];
 
+let ws: WebSocket | null = null;
 export class BinanceWS {
-    private ws: WebSocket | null = null;
 
     constructor(url: string, onMessage: ({ data }: any) => void) {
-        if (!this.ws) {
-            const ws = new WebSocket(url);
+        if (!ws) {
+            ws = new WebSocket(url);
             BinanceWS.addListeners(ws, onMessage);
-            this.ws = ws;
         }
     }
 
     closeConnection(onMessage: ({ data }: any) => void) {
-        this.ws?.close();
+        ws?.close();
         this.removeEventListener(onMessage);
+        ws = null;
     }
 
 
@@ -46,13 +46,13 @@ export class BinanceWS {
     };
 
     private removeEventListener(onMessage: ({ data }: any) => void) {
-        if (!this.ws) {
+        if (!ws) {
             throw new Error('Websocket instance doesn\'t exist');
         }
-        this.ws.removeEventListener('open', BinanceWS.handleOpen);
-        this.ws.removeEventListener('error', BinanceWS.handleError);
-        this.ws.removeEventListener('close', BinanceWS.handleClose);
-        this.ws.removeEventListener('message', onMessage);
+        ws.removeEventListener('open', BinanceWS.handleOpen);
+        ws.removeEventListener('error', BinanceWS.handleError);
+        ws.removeEventListener('close', BinanceWS.handleClose);
+        ws.removeEventListener('message', onMessage);
     }
 
 }
