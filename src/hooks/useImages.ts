@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { from, forkJoin } from 'rxjs';
 
 const IMAGE_URLS = [
-    'https://www.svgrepo.com/download/448058/logo.svg',
-    'https://www.svgrepo.com/download/424929/logo-raspberry-pi-open-source.svg',
-    'https://www.svgrepo.com/download/327371/logo-ionitron.svg'
+    'https://site-assets.fontawesome.com/releases/v6.4.2/svgs/solid/face-laugh.svg',
+    'https://site-assets.fontawesome.com/releases/v6.4.2/svgs/solid/hippo.svg',
+    'https://site-assets.fontawesome.com/releases/v6.4.2/svgs/solid/chart-line.svg'
 ];
 
 export const useImages = () => {
