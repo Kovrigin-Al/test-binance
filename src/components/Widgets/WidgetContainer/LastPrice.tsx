@@ -7,5 +7,5 @@ type Props = {
 };
 
 export const LastPrice = memo(({ lastPrice }: Props) => {
-    return <WidgetLayout title="Last price:" value={parseFloat(lastPrice)} />;
+    return <WidgetLayout title="Last price:" value={lastPrice} />;
 });

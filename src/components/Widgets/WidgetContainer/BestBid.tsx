@@ -7,5 +7,5 @@ type Props = {
 };
 
 export const BestBid = memo(({ bestBid }: Props) => {
-    return <WidgetLayout title="Best bid price:" value={parseFloat(bestBid)} />;
+    return <WidgetLayout title="Best bid price:" value={bestBid} />;
 });

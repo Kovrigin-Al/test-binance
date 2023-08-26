@@ -13,8 +13,10 @@ export const Layout = ({ RightSection, TopSection, MainSection }: Props) => {
                 {TopSection}
             </div>
             <div className="h-full w-full bg-red-100">{MainSection}</div>
-            <div className="absolute right-0 top-12 h-screen w-[20%] border-l border-black">
-                {RightSection}
+            <div className="absolute right-0 top-0 h-screen w-[20%] pt-12">
+                <div className={'h-full border-l border-black'}>
+                    {RightSection}
+                </div>
             </div>
         </div>
     );

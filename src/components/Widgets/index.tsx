@@ -3,7 +3,7 @@ import { Loading } from '../Loading/Loading';
 import { WidgetsContainer } from './WidgetContainer';
 import { WidgetsLayout } from './WidgetsLayout';
 
-const PATH = 'bchusdt@ticker';
+const PATH = 'bnbusdt@ticker';
 
 export const Widgets = () => {
     const data = useWebSocket(PATH);
