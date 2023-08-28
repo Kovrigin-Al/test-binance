@@ -9,6 +9,7 @@ https://test-binance.vercel.app
 ## Run locally
 
 First create .env file the the root repository. The required variables are shown in **example.env**.
+You can obtain API Key and API secret by following the instructions https://www.binance.com/en/support/faq/how-to-test-my-functions-on-binance-testnet-ab78f9a1b8824cf0a106b4229c76496d
 
 Then run in your terminal:
 
