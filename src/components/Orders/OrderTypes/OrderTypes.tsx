@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 
-import { OrderType } from '../../api/postOrder.types';
+import { OrderType } from '../../../api/postOrder.types';
 
 type Props = {
     type: OrderType;

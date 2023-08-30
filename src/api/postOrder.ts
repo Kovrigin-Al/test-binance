@@ -1,10 +1,6 @@
 import axios, { AxiosError } from 'axios';
-import CryptoJS from 'crypto-js';
 import { OrderQueryParams, PlaceOrderParams } from './postOrder.types.ts';
-
-const apiKey = import.meta.env.VITE_API_KEY;
-const apiSecret = import.meta.env.VITE_API_SECRET;
-const endpoint = import.meta.env.VITE_REST_BASE_URL + '/fapi/v1/order';
+import { createUrl, getAxiosHeaderParam, isMsgInResponse } from './utils.ts';
 
 export function placeOrder({
     type,
@@ -25,30 +21,15 @@ export function placeOrder({
         timestamp: Date.now()
     };
 
-    const queryString = Object.keys(params)
-        .map((key) => {
-            const value = params[key as keyof typeof params];
-            if (value) {
-                return `${key}=${value}`;
-            }
-        })
-        .join('&');
-
-    const signature = CryptoJS.HmacSHA256(queryString, apiSecret).toString();
-    const url = `${endpoint}?${queryString}&signature=${signature}`;
-
+    const url = createUrl('/fapi/v1/order', params);
     return axios
         .post(url, undefined, {
-            headers: { 'X-MBX-APIKEY': apiKey },
+            ...getAxiosHeaderParam(),
             signal: controller.signal
         })
         .catch((error: AxiosError) => {
             const responseData = error.response?.data;
-            if (
-                typeof responseData === 'object' &&
-                responseData !== null &&
-                'msg' in responseData
-            ) {
+            if (isMsgInResponse(responseData)) {
                 throw responseData.msg;
             } else {
                 throw 'Unknown error';

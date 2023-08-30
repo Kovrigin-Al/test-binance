@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-import { OrderTypes } from '../OrderTypes/OrderTypes';
-import Button from '../Button/Button';
-import { Input } from '../Input/Input';
+import { OrderTypes } from './OrderTypes/OrderTypes';
+import { PlaceOrderButton } from './PlaceOrderButton';
+import { Balance } from './Balance';
+import OrderValues from './OrderValues';
 
 import useInput from '../../hooks/useInput';
 import { OrderType, PlaceOrderParams } from '../../api/postOrder.types';
@@ -10,15 +11,16 @@ import { OrderType, PlaceOrderParams } from '../../api/postOrder.types';
 type Props = {
     triggerRequest: (params: PlaceOrderParams) => Promise<void>;
     isLoading: boolean;
+    balance?: string;
 };
 
-export const OrderForm = ({ triggerRequest, isLoading }: Props) => {
+export const OrderForm = ({ triggerRequest, isLoading, balance }: Props) => {
     const [side, setSide] = useState<'BUY' | 'SELL'>('BUY');
     const [price, onPriceChange] = useInput();
     const [quantity, onQuantityChange] = useInput();
     const [orderType, setOrderType] = useState<'LIMIT' | 'MARKET'>('LIMIT');
 
-    const checkFields = () => {
+    const checkFieldsAreProvided = () => {
         if (orderType === 'LIMIT') {
             return !!(
                 price &&
@@ -31,11 +33,11 @@ export const OrderForm = ({ triggerRequest, isLoading }: Props) => {
         return !!(quantity && Number(quantity) > 0 && side);
     };
 
-    const isDisabled = !checkFields() || isLoading;
+    const isDisabled = !checkFieldsAreProvided() || isLoading;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (checkFields()) {
+        if (checkFieldsAreProvided()) {
             const payload: PlaceOrderParams = {
                 quantity,
                 side,
@@ -58,45 +60,21 @@ export const OrderForm = ({ triggerRequest, isLoading }: Props) => {
                     type={orderType}
                     handleChangeOrderType={handleChangeOrderType}
                 />
-                {orderType === 'LIMIT' && (
-                    <Input
-                        placeholder="Price"
-                        min={0.01}
-                        step={0.01}
-                        value={price}
-                        onChange={onPriceChange}
-                        type="number"
-                    />
-                )}
-                <Input
-                    placeholder="Size"
-                    min={0.01}
-                    step={0.01}
-                    value={quantity}
-                    onChange={onQuantityChange}
-                    type="number"
+                <OrderValues
+                    {...{
+                        onPriceChange,
+                        onQuantityChange,
+                        orderType,
+                        price,
+                        quantity
+                    }}
                 />
             </div>
             <div className="my-5 flex w-full justify-around">
-                <Button
-                    variant="lg"
-                    color="success"
-                    type="submit"
-                    disabled={isDisabled}
-                    onClick={() => setSide('BUY')}
-                >
-                    Buy
-                </Button>
-                <Button
-                    variant="lg"
-                    color="error"
-                    type="submit"
-                    disabled={isDisabled}
-                    onClick={() => setSide('SELL')}
-                >
-                    Sell
-                </Button>
+                <PlaceOrderButton {...{ isDisabled, setSide }} name="BUY" />
+                <PlaceOrderButton {...{ isDisabled, setSide }} name="SELL" />
             </div>
+            <Balance balance={balance} />
         </form>
     );
 };
