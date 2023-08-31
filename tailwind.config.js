@@ -4,7 +4,7 @@ export default {
     theme: {
         extend: {
             animation: {
-                'ping-slow': 'pulse 600ms cubic-bezier(0.4, 0, 0.6, 1)'
+                'ping-slow': 'pulse 400ms cubic-bezier(0.4, 0, 0.6, 1)'
             }
         }
     },

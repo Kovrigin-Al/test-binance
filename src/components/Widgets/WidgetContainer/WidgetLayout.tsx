@@ -1,6 +1,6 @@
 type Props = {
     title: string;
-    value: number;
+    value: string;
 };
 
 export const WidgetLayout = ({ title, value }: Props) => {
@@ -8,7 +8,7 @@ export const WidgetLayout = ({ title, value }: Props) => {
         <div className="flex w-full flex-nowrap items-baseline justify-between">
             <div className="font-bold">{title}</div>
             <div className=" animate-ping-slow" key={value}>
-                {value}
+                {parseFloat(value).toFixed(2)}
             </div>
         </div>
     );

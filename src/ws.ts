@@ -1,5 +1,5 @@
 const availableTokens: string[] = [
-    "bchusdt@ticker"
+    "bnbusdt@ticker"
 ];
 
 let ws: WebSocket | null = null;
