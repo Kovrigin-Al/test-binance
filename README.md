@@ -2,7 +2,13 @@
 
 This is a single page cryptocurrency application for pitting in orders.
 
-## Live version
+> ## ⚠️ **Important**
+>
+> This project is based on the open BinanceAPI, which has CORS limitations.
+>
+> You can access the live version by installing a free browser extensions like "Allow-CORS".
+>
+> We plan to resolve the CORS issue by developing a proxy server in the next steps.
 
 https://test-binance.vercel.app
 

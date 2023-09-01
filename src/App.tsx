@@ -2,6 +2,7 @@ import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import { Layout } from './components/Layout/Layout';
 import { NavBar } from './components/NavBar/NavBar';
 import { Orders } from './components/Orders';
+import { Positions } from './components/Positions';
 import { Widgets } from './components/Widgets';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
                 MainSection={<Widgets />}
                 RightSection={<Orders />}
                 TopSection={<NavBar />}
+                BottomSection={<Positions />}
             />
         </ErrorBoundary>
     );

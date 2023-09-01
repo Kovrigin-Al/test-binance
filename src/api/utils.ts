@@ -15,6 +15,7 @@ export const createUrl = (
                 return `${key}=${value}`;
             }
         })
+        .filter(Boolean)
         .join('&');
     const signature = CryptoJS.HmacSHA256(
         paramsStringified,
