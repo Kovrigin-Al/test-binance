@@ -23,7 +23,7 @@ const OrderValues = ({
         <>
             {orderType === 'LIMIT' && (
                 <Input
-                    placeholder="Price"
+                    placeholder="Price in USDT"
                     min={0.01}
                     step={0.01}
                     value={price}
