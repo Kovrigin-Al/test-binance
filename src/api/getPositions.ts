@@ -22,7 +22,7 @@ type PositionResponse = {
 
 export type Position = Pick<
     PositionResponse,
-    'entryPrice' | 'markPrice' | 'symbol' | 'positionAmt'
+    'entryPrice' | 'markPrice' | 'symbol' | 'positionAmt' | 'unRealizedProfit'
 >;
 
 export const getPositions = () => {
@@ -36,8 +36,20 @@ export const getPositions = () => {
             data
                 .filter((i) => +i.entryPrice > 0)
                 .map(
-                    ({ symbol, entryPrice, markPrice, positionAmt }) =>
-                        <Position>{ symbol, entryPrice, markPrice, positionAmt }
+                    ({
+                        symbol,
+                        entryPrice,
+                        markPrice,
+                        positionAmt,
+                        unRealizedProfit
+                    }) =>
+                        <Position>{
+                            symbol,
+                            entryPrice,
+                            markPrice,
+                            positionAmt,
+                            unRealizedProfit
+                        }
                 )
         );
 };

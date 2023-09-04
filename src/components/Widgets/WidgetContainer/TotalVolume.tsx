@@ -5,10 +5,5 @@ type Props = {
 };
 
 export const TotalVolume = ({ totalVolume }: Props) => {
-    return (
-        <WidgetLayout
-            title="Total traded base asset volume:"
-            value={totalVolume}
-        />
-    );
+    return <WidgetLayout title="Total traded volume:" value={totalVolume} />;
 };

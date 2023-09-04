@@ -7,17 +7,16 @@ const PATH = 'bnbusdt@ticker';
 
 export const Widgets = () => {
     const data = useWebSocket(PATH);
-    return (
-        <WidgetsLayout>
-            {data ? (
-                <WidgetsContainer
-                    lastPrice={data.c}
-                    bestBid={data.b}
-                    totalVolume={data.v}
-                />
-            ) : (
-                <Loading />
-            )}
-        </WidgetsLayout>
+
+    const widgets = data ? (
+        <WidgetsContainer
+            lastPrice={data.c}
+            bestBid={data.b}
+            totalVolume={data.v}
+        />
+    ) : (
+        <Loading />
     );
+
+    return <WidgetsLayout widgets={widgets} />;
 };

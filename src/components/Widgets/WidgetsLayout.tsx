@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
 
 type Props = {
-    children: ReactNode;
+    widgets: ReactNode;
 };
 
-export const WidgetsLayout = ({ children }: Props) => {
+export const WidgetsLayout = ({ widgets }: Props) => {
     return (
-        <div className="flex h-full w-full items-center justify-center">
-            {children}
+        <div className="flex h-full w-full flex-col items-center justify-start">
+            <div className="h-16 w-full">{widgets}</div>
         </div>
     );
 };
