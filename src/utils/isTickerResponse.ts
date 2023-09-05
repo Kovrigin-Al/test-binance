@@ -1,6 +1,6 @@
-import { StreamResponse } from '../types/ws';
+import { TickerResponse } from '../types/ws';
 
-export function isStreamResponse(res: any): res is StreamResponse {
+export function isTickerResponse(res: any): res is TickerResponse {
     const checkStringProperty = (property: string) =>
         Object.hasOwn(res, property) && typeof res[property] === 'string';
     const checkNumberProperty = (property: string) =>
