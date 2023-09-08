@@ -1,9 +1,15 @@
-import { Position } from '../../../api/getPositions';
+import { Loading } from '../../Loading/Loading';
 import { PositionRow } from './PositionRow';
 
-type Props = { positions: Position[] };
+import { Position } from '../../../api/getPositions';
 
-export const PositionTable = ({ positions }: Props) => {
+type Props = { positions?: Position[] };
+
+export const PositionsTable = ({ positions }: Props) => {
+    if (!positions) {
+        return <Loading />;
+    }
+
     return (
         <table className="h-ful w-full table-fixed border-t-[1px] border-black">
             <thead className="sticky top-0 border-b-2 border-slate-200 bg-slate-100">
