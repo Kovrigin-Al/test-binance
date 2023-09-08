@@ -1,22 +1,7 @@
-import { useWebSocket } from '../../hooks/useWebSocket';
-import { Loading } from '../Loading/Loading';
+import { Chart } from './Chart';
 import { WidgetsContainer } from './WidgetContainer';
 import { WidgetsLayout } from './WidgetsLayout';
 
-const PATH = 'bnbusdt@ticker';
-
 export const Widgets = () => {
-    const data = useWebSocket(PATH);
-
-    const widgets = data ? (
-        <WidgetsContainer
-            lastPrice={data.c}
-            bestBid={data.b}
-            totalVolume={data.v}
-        />
-    ) : (
-        <Loading />
-    );
-
-    return <WidgetsLayout widgets={widgets} />;
+    return <WidgetsLayout widgets={<WidgetsContainer />} chart={<Chart />} />;
 };

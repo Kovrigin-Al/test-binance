@@ -1,5 +1,7 @@
 const availableTokens: string[] = [
-    "bnbusdt@ticker"
+    "bnbusdt@ticker",
+    "bnbusdt@kline_1m"
+
 ];
 
 let ws: WebSocket | null = null;
@@ -13,9 +15,11 @@ export class BinanceWS {
     }
 
     closeConnection(onMessage: ({ data }: any) => void) {
-        ws?.close();
-        this.removeEventListener(onMessage);
-        ws = null;
+        if (ws) {
+            ws.close();
+            this.removeEventListener(onMessage);
+            ws = null;
+        }
     }
 
 
