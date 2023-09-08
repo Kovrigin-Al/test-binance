@@ -6,7 +6,6 @@ type Props = {
 };
 
 export const PositionRow = ({ position }: Props) => {
-    console.log(position.unRealizedProfit);
     return (
         <tr className="text-center odd:bg-slate-50 even:bg-slate-100">
             <td>{position.symbol}</td>
